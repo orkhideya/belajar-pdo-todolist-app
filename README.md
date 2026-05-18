@@ -19,3 +19,52 @@ Proyek ini memisahkan kode ke dalam beberapa lapisan.
 **Helper** berisi fungsi kecil untuk membaca input dari pengguna di terminal.
 
 Semua lapisan ini dihubungkan di `App.php` lewat dependency injection melalui constructor, sehingga tiap lapisan tidak perlu tahu detail implementasi lapisan lain.
+
+## Cara Menjalankan
+
+Pastikan sudah ada PHP dan MySQL yang berjalan di lokal, misalnya lewat XAMPP atau Laragon.
+
+### Membuat Database
+
+Buka phpMyAdmin atau MySQL lewat terminal, lalu jalankan query berikut satu per satu.
+
+```sql
+CREATE DATABASE todolist;
+
+USE todolist;
+
+CREATE TABLE todolistpdo (
+    id   INT          NOT NULL AUTO_INCREMENT,
+    todo VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+```
+
+### Konfigurasi Koneksi
+
+Salin file konfigurasi database yang tersedia.
+
+```
+copy Config\Database.example.php Config\Database.php
+```
+
+Buka `Config/Database.examplephp` lalu sesuaikan nilai berikut dengan pengaturan lokal.
+
+```php
+$host = 'localhost';
+$db   = 'todolist';
+$user = 'root';
+$pass = '';
+```
+
+### Menjalankan Aplikasi
+
+```
+php App.php
+```
+
+Kalau ingin memastikan koneksi ke database berhasil dulu sebelum menjalankan aplikasi utama, pakai file ini.
+
+```
+php Test/test-connection.php
+```
