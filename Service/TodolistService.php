@@ -29,8 +29,10 @@ namespace Service {
     {
       echo "TODOLIST" . PHP_EOL;
       $todolist = $this->todolistRepository->findAll();
-      foreach ($todolist as $number => $value) {
-        echo "$number. " . $value->getTodo() . PHP_EOL;
+      $number = 1;
+      foreach ($todolist as $value) {
+        echo $number . ". " . $value->getTodo() . PHP_EOL;
+        $number++;
       }
     }
 
@@ -43,7 +45,17 @@ namespace Service {
 
     function removeTodolist(int $number): void
     {
-      if ($this->todolistRepository->remove($number)) {
+      $todolist = $this->todolistRepository->findAll();
+      $index = $number - 1;
+
+      if ($index < 0 || $index >= sizeof($todolist)) {
+        echo "GAGAL MENGHAPUS TODOLIST" . PHP_EOL;
+        return;
+      }
+
+      $id = $todolist[$index]->getId();
+
+      if ($this->todolistRepository->remove($id)) {
         echo "SUKSES MENGHAPUS TODOLIST" . PHP_EOL;
       } else {
         echo "GAGAL MENGHAPUS TODOLIST" . PHP_EOL;

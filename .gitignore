@@ -1,0 +1,37 @@
+#DB
+Config/Database.php
+
+#.env
+.env
+.env.local
+.env.*.local
+
+
+
+# DEPENDENSI 
+/vendor/
+composer.lock
+
+
+#CACHE
+*.cache
+
+#LOG
+*.log
+/logs/
+/log/
+
+#MISC
+Thumbs.db
+.DS_Store
+desktop.ini
+
+
+# IDE & EDITOR
+.vscode/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+/nbproject/
+
