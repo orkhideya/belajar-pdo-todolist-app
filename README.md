@@ -48,7 +48,7 @@ Salin file konfigurasi database yang tersedia.
 copy Config\Database.example.php Config\Database.php
 ```
 
-Buka `Config/Database.examplephp` lalu sesuaikan nilai berikut dengan pengaturan lokal.
+Buka `Config/Database.example.php` lalu sesuaikan nilai berikut dengan pengaturan lokal.
 
 ```php
 $host = 'localhost';
